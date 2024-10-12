@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\EspecialidadRequest;
+use App\Http\Resources\EspecialidadResource;
 use App\Models\Especialidad;
 use Exception;
 use Illuminate\Http\Request;
@@ -43,7 +44,7 @@ class EspecialidadController extends Controller
 
             return Response([
                 "success" => true,
-                'data' => $especialidad
+                'data' => new EspecialidadResource($especialidad)
             ],200,["Content-Type"=>"application/json"]);
 
         } catch (Exception $e) {
@@ -62,7 +63,7 @@ class EspecialidadController extends Controller
 
             return Response([
                 "success" => true,
-                "data" => $especialidad
+                "data" => new EspecialidadResource($especialidad)
             ],200,['Content-Type' => 'application/json']);
             
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
@@ -84,7 +85,7 @@ class EspecialidadController extends Controller
 
             return Response([
                 "success" => true,
-                "data" => $especialidad
+                "data" => new EspecialidadResource($especialidad)
             ],200,['Content-Type'=>'application/json']);
 
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
@@ -103,7 +104,7 @@ class EspecialidadController extends Controller
 
             return Response([
                 'success' => true,
-                'data' => $especialidad
+                'data' => new EspecialidadResource($especialidad)
             ],200,['Content-Type'=>'application/json']);
 
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
